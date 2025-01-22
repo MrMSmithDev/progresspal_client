@@ -6,12 +6,15 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "next lint",
+    "format": "prettier --write"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "jwt-decode": "^4.0.0",
     "next": "^15.1.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
