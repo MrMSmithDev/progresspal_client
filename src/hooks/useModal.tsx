@@ -1,4 +1,5 @@
 import React, { createContext, ReactNode, useContext, useState } from 'react';
+import { CloseIcon } from '@components/icons';
 import style from '@styles/useModal.module.scss';
 
 interface ModalContextType {
@@ -51,10 +52,10 @@ export const ModalProvider: React.FC<ModalProviderProps> = ({ children }) => {
     >
       {children}
       {isModalOpen && (
-        <div className={style.modalOuter}>
-          <div className={style.modalInner}>
-            <p className={style.modalMessage}>{modalMessage}</p>
-            <button onClick={closeModal}></button>
+        <div className="fixed bottom-0 w-full bg-white">
+          <div className="text-center p-1">
+            <p className="">{modalMessage}</p>
+            <button onClick={closeModal}><CloseIcon /></button>
           </div>
         </div>
       )}
