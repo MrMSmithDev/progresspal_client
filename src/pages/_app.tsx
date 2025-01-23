@@ -1,9 +1,10 @@
 import React from 'react';
 import { AuthProvider } from '@hooks/useAuth';
+import { ModalProvider } from '@hooks/useModal';
 import { AppProps } from 'next/app';
 
-import '@styles/reset.scss';
-import { ModalProvider } from '@hooks/useModal';
+import '@styles/reset.css';
+import '@styles/global.css';
 
 function App({ Component, pageProps }: AppProps) {
   return (
