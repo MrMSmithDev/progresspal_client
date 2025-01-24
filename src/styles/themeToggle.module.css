@@ -1,0 +1,82 @@
+.toggle-Container {
+    --inactive-color: #3e3636;
+    position: relative;
+    aspect-ratio: 292 / 142;
+    height: 30px;
+    
+    &:nth-child(1) {
+      --active-color: #fffd5f;
+    }
+  }
+  
+  .toggleInput {
+    appearance: none;
+    margin: 0;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+  
+  .toggle {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+  
+  .toggleBackground {
+    fill: var(--inactive-color);
+    transition: fill .4s;
+    
+    .toggleInput:checked + .toggle & {
+      fill: var(--active-color);
+    }
+  }
+  
+  .toggleCircleCenter {
+    transform-origin: center;
+    transition: transform .6s;
+  
+    .toggle-input:checked + .toggle & {
+      transform: translateX(150px);
+    }
+  }
+  
+  .toggleCircle {
+    transform-origin: center;
+    backface-visibility: hidden;
+    transition: transform .45s;
+    
+    &.left {
+      transform: scale(1);
+      
+      .toggle-input:checked + .toggle & {
+        transform: scale(0);
+      }
+    }
+    
+    &.right {
+      transform: scale(0);
+      
+      .toggle-input:checked + .toggle & {
+        transform: scale(1);
+      }
+    }
+  }
+  
+  .toggleIcon {
+    transition: fill .4s;
+  
+    &.on {
+      fill: #3e3636;
+    }
+  
+    &.off {
+      fill: #fffd5f; // gray moon colour
+  
+    }
+  }
+  
