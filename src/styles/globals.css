@@ -1,3 +1,19 @@
+@import 'tailwindcss';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@theme {
+  --color-primary: #89c624;
+  --color-primary-dark: #76a118;
+
+  --color-secondary: #ff5722;
+  --color-secondary-dark: #e64a19;
+
+  --color-input: #ffffff;
+  --color-input-dark: #2a3b4a;
+
+  --color-background: #f0f0f0;
+  --color-background-dark: #0a192e;
+}
