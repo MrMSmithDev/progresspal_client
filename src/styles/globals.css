@@ -4,16 +4,83 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'delirium';
+  src:
+    url('~@assets/fonts/deliriumncv-vm5e-webfont.woff2') format('woff2'),
+    url('~@assets/fonts/deliriumncv-vm5e-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'delirium-neon';
+  src:
+    url('~@assets/fonts/deliriumneonncv-j1ak-webfont.woff2') format('woff2'),
+    url('~@assets/fonts/deliriumneonncv-j1ak-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 @theme {
-  --color-primary: #89c624;
+  --color-primary: #10d0a3;
   --color-primary-dark: #76a118;
 
   --color-secondary: #ff5722;
   --color-secondary-dark: #e64a19;
 
-  --color-input: #ffffff;
+  --color-input: #fdfdfd;
   --color-input-dark: #2a3b4a;
 
   --color-background: #f0f0f0;
   --color-background-dark: #0a192e;
+
+  --color-secondary-background: #ffffff;
+  --color-secondary-background-dark: #051d3e;
+
+  --color-button: #0a192e;
+  --color-button-dark: ;
+
+  --color-green-gradient: #81ffa5;
+
+  --font-delirium: delirium;
+  --font-delirium-neon: delirium-neon;
+}
+
+.home-background-img {
+  background-position: center;
+  background-size: cover;
+  z-index: -1;
+}
+
+@media (max-width: 768px) {
+  .home-background-img {
+    background-image: url('~@assets/images/home-sm-bg.webp');
+  }
+}
+
+@media (min-width: 769px) {
+  .home-background-img {
+    background-image: url('~@assets/images/home-lg-bg.webp');
+  }
+}
+
+.modal-slide {
+  animation-name: modal-slide, modal-slide;
+  animation-direction: normal, reverse;
+  animation-duration: 0.5s, 0.5s;
+  animation-iteration-count: 1, 1;
+  animation-delay: 0s, 3s;
+  animation-play-state: running, running;
+  transition: 0.3s;
+}
+
+@keyframes modal-slide {
+  0% {
+    transform: translateY(100%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
 }
