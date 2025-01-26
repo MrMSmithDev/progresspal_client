@@ -1,7 +1,7 @@
 import useTheme from '@hooks/useTheme';
 import React from 'react';
 
-import style from '@styles/themeToggle.module.css';
+import style from '@styles/themeToggle.module.scss';
 
 const ThemeToggle: React.FC = () => {
   const [theme, toggleTheme] = useTheme();
@@ -11,6 +11,7 @@ const ThemeToggle: React.FC = () => {
       <input
         className={style.toggleInput}
         type="checkbox"
+        name="theme-toggle"
         onChange={toggleTheme}
         checked={theme === "dark"}
       />
@@ -58,7 +59,7 @@ const ThemeToggle: React.FC = () => {
             width="114"
             height="114"
             rx="58"
-            fill="#fff"
+            fill="#3e3636"
           />
         </g>
         <filter id="goo">

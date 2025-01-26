@@ -6,7 +6,7 @@ interface SubmitButtonInterface {
 }
 
 const SubmitButton: React.FC<SubmitButtonInterface> = ({ func, text }) => {
-  return <button onClick={func} className="rounded">{text}</button>;
+  return <button onClick={func} className="rounded bg-button dark:bg-button-dark text-white p-1 w-30 cursor-pointer tracking-wider">{text}</button>;
 };
 
 export default SubmitButton;
