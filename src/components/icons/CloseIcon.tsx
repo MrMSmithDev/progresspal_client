@@ -3,8 +3,8 @@ import React from 'react';
 const CloseIcon: React.FC = () => {
   return (
     <svg viewBox="0 0 1024 1024" fill="#000000">
-      <g stroke-width="0"></g>
-      <g stroke-linecap="round" stroke-linejoin="round"></g>
+      <g strokeWidth="0"></g>
+      <g strokeLinecap="round" strokeLinejoin="round"></g>
       <g>
         <path
           fill="#000000"
