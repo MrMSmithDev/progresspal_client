@@ -71,11 +71,11 @@ const SignupForm: React.FC = () => {
   return (
     <form
       onSubmit={submitForm}
-      className="shadow-md rounded px-8 pt-6 pb-8 mb-4"
+      className="flex flex-col items-center pt-6 pb-4 w-full"
     >
-      <div className="mb-4">
+      <div className="pb-3 inline-block w-full">
         <label
-          className="block text-gray-700 text-sm font-bold mb-2"
+          className="block text-gray-700 text-sm font-bold"
           htmlFor="username"
         >
           Username
@@ -89,15 +89,15 @@ const SignupForm: React.FC = () => {
         />
       </div>
 
-      <div className="mb-4">
+      <div className="pb-3 inline-block w-full">
         <label
-          className="block text-gray-700 text-sm font-bold mb-2"
+          className="block text-gray-700 text-sm font-bold"
           htmlFor="username"
         >
           Email
         </label>
         <input
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight bg-input dark:bg-input-dark focus:outline-none focus:shadow-outline"
           id="email"
           type="email"
           onChange={handleEmailChange}
@@ -105,9 +105,9 @@ const SignupForm: React.FC = () => {
         />
       </div>
 
-      <div className="mb-4">
+      <div className="pb-3 inline-block w-full">
         <label
-          className="block text-gray-700 text-sm font-bold mb-2"
+          className="block text-gray-700 text-sm font-bold"
           htmlFor="password"
         >
           Password
@@ -121,9 +121,9 @@ const SignupForm: React.FC = () => {
         />
       </div>
 
-      <div className="mb-4">
+      <div className="pb-3 inline-block w-full">
         <label
-          className="block text-gray-700 text-sm font-bold mb-2"
+          className="block text-gray-700 text-sm font-bold"
           htmlFor="passwordRepeat"
         >
           Repeat password
@@ -137,9 +137,9 @@ const SignupForm: React.FC = () => {
         />
       </div>
 
-      <div className="mb-4">
+      <div className="pb-3 inline-block w-full">
         <label
-          className="block text-gray-700 text-sm font-bold mb-2"
+          className="block text-gray-700 text-sm font-bold"
           htmlFor="target"
         >
           Target
@@ -150,8 +150,10 @@ const SignupForm: React.FC = () => {
           type="number"
           onChange={handleTargetChange}
           placeholder="0"
+          min="0"
+          max="28"
         />
-        <p>How many times would you like to work out a month?</p>
+        <p className="text-xs">How many times would you like to work out a month? (0 - 28)</p>
       </div>
       <SubmitButton func={submitForm} text="Sign up" />
     </form>
