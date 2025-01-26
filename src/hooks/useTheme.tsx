@@ -4,7 +4,7 @@ const useTheme = (): [string, () => void] => {
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
 
   useEffect(() => {
-    const storedTheme = localStorage.get('theme');
+    const storedTheme = localStorage.getItem('theme');
     const systemTheme = window.matchMedia('(prefers-color-scheme: dark)')
       .matches
       ? 'dark'
