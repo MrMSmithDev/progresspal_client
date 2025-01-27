@@ -4,8 +4,8 @@ import { IconProps } from './types';
 const GitHubIcon: React.FC<IconProps> = ({ className }) => {
   return (
     <svg viewBox="0 0 20 20" version="1.1" fill="#ffffff" className={`${className} h-5 w-5 lg:h-7 lg:w-7`}>
-      <g stroke-width="0"></g>
-      <g stroke-linecap="round" stroke-linejoin="round"></g>
+      <g strokeWidth="0"></g>
+      <g strokeLinecap="round" strokeLinejoin="round"></g>
       <g>
         <defs> </defs>
         <g
