@@ -1,8 +1,13 @@
 import React from 'react';
+import { IconProps } from './types';
 
-const SettingsIcon: React.FC = () => {
+const SettingsIcon: React.FC<IconProps> = ({ className }) => {
   return (
-    <svg viewBox="0 0 24 24" fill="none" className="h--7 w-7 lg:h-10 md:w-10">
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      className={`${className} h-7 w-7 lg:h-10 md:w-10`}
+    >
       <g strokeWidth="0"></g>
       <g strokeLinecap="round" strokeLinejoin="round"></g>
       <g>
