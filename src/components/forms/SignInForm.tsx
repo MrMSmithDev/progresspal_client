@@ -39,9 +39,10 @@ const SignInForm: React.FC = () => {
     };
 
     const data = (await fetchData(
-      '/user/signin',
+      '/user/login',
       reqOptions
     )) as SignInResponse;
+
     if (!data.token) {
       openModal('Error signing in: Please try again later');
     } else {
