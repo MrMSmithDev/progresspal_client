@@ -1,4 +1,4 @@
-import { SubmitButton } from '@components/buttons';
+import { CancelButton, SubmitButton } from '@components/buttons';
 import { useModal } from '@hooks/useModal';
 import { fetchData } from '@utils/api';
 import React, { useState } from 'react';
@@ -103,8 +103,10 @@ const UpdatePasswordForm: React.FC<UpdatePasswordFormProps> = ({
           placeholder="Repeat New Password"
         />
       </div>
-
-      <SubmitButton func={submitForm} text="Update" />
+      <div className="flex gap-2">
+        <SubmitButton func={submitForm} text="Update" />
+        <CancelButton cancelFunc={closeForm} />
+      </div>
     </form>
   );
 };
