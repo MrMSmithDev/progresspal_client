@@ -52,9 +52,9 @@ export const ModalProvider: React.FC<ModalProviderProps> = ({ children }) => {
     >
       {children}
       {isModalOpen && (
-        <div className="fixed bottom-0 w-full bg-white flex justify-center modal-slide">
+        <div className="fixed bottom-0 w-full bg-white dark:bg-background-dark flex justify-center modal-slide border-t-primary border-t-solid border-t-2">
           <div className="text-center p-1 flex items-center p-2">
-            <p className="">{modalMessage}</p>
+            <p className="dark:text-white">{modalMessage}</p>
             <button onClick={closeModal}><CloseIcon /></button>
           </div>
         </div>
