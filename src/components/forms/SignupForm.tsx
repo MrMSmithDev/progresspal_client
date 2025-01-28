@@ -2,6 +2,7 @@ import { SubmitButton } from '@components/buttons';
 import { useAuth } from '@hooks/useAuth';
 import { useModal } from '@hooks/useModal';
 import { fetchData } from '@utils/api';
+import Link from 'next/link';
 import React, { useState } from 'react';
 
 interface SignupResponse {
@@ -17,6 +18,7 @@ const SignupForm: React.FC = () => {
   const [passwordInput, setPasswordInput] = useState<string>('');
   const [passwordRepeat, setPasswordRepeat] = useState<string>('');
   const [target, setTarget] = useState<number>(0);
+  const [agreedTerms, setAgreedTerms] = useState<boolean>(false);
 
   const { setToken, setUsername } = useAuth();
   const { openModal } = useModal();
@@ -44,8 +46,17 @@ const SignupForm: React.FC = () => {
     setTarget(targetNum);
   }
 
+  function handleTermsChange(e: React.ChangeEvent<HTMLInputElement>): void {
+    setAgreedTerms(e.currentTarget.checked)
+    console.log(agreedTerms);
+  }
+
   async function submitForm(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+
+    if(!agreedTerms) {
+      return openModal('Please confirm you agree with the terms and conditions')
+    }
 
     const reqOptions = {
       method: 'POST',
@@ -59,7 +70,10 @@ const SignupForm: React.FC = () => {
       }),
     };
 
-    const data = await fetchData('/user/signup', reqOptions) as SignupResponse;
+    const data = (await fetchData(
+      '/user/signup',
+      reqOptions
+    )) as SignupResponse;
     if (!data.token) {
       openModal('Error signing up: Please try again later');
     } else {
@@ -153,7 +167,23 @@ const SignupForm: React.FC = () => {
           min="0"
           max="28"
         />
-        <p className="text-xs">How many times would you like to work out a month? (0 - 28)</p>
+        <p className="text-xs">
+          How many times would you like to work out a month? (0 - 28)
+        </p>
+      </div>
+      <div className="flex items-center pb-3">
+        <input
+          id="terms-agreement"
+          type="checkbox"
+          onChange={handleTermsChange}
+          className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 cursor-pointer"
+        />
+        <label
+          htmlFor="terms-agreement"
+          className="ms-2 text-xs font-medium text-gray-900 dark:text-gray-300"
+        >
+          I agree to the <Link href="/terms-and-conditions" className="text-blue-500 hover:underline">Terms and conditions</Link>
+        </label>
       </div>
       <SubmitButton func={submitForm} text="Sign up" />
     </form>
