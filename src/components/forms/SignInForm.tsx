@@ -50,7 +50,7 @@ const SignInForm: React.FC = () => {
       setUsername(data.username);
       localStorage.setItem('token', data.token);
       localStorage.setItem('username', data.username);
-      openModal(`Welcome back ${data.username}`);
+      openModal(`Welcome back ${data.username}!`);
     }
   }
 
