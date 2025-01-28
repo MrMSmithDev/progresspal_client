@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 
+type Themes = 'light' | 'dark';
+
 const useTheme = (): [string, () => void] => {
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
 
@@ -9,11 +11,13 @@ const useTheme = (): [string, () => void] => {
       .matches
       ? 'dark'
       : 'light';
-    const initialTheme = storedTheme || systemTheme;
+    const initialTheme = (storedTheme || systemTheme) as Themes;
+
+    setTheme(initialTheme);
     document.documentElement.classList.add(initialTheme);
   }, []);
 
-  const toggleTheme = () => {
+  function toggleTheme() {
     const newTheme = theme === 'light' ? 'dark' : 'light';
 
     document.documentElement.classList.remove(theme);
@@ -21,7 +25,7 @@ const useTheme = (): [string, () => void] => {
 
     setTheme(newTheme);
     localStorage.setItem('theme', newTheme);
-  };
+  }
 
   return [theme, toggleTheme];
 };
