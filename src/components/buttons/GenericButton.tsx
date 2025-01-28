@@ -1,13 +1,13 @@
 import React from 'react';
 
 interface GenericButtonInterface {
-  inset: boolean;
+  inset?: boolean;
   func: (args: any) => any;
   text: string;
 }
 
 const GenericButton: React.FC<GenericButtonInterface> = ({
-  inset,
+  inset = false,
   func,
   text,
 }) => {
