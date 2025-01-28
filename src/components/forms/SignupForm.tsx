@@ -89,13 +89,13 @@ const SignupForm: React.FC = () => {
     >
       <div className="pb-3 inline-block w-full">
         <label
-          className="block text-gray-700 text-sm font-bold"
+          className="block text-gray-700 dark:text-gray-100 text-sm font-bold"
           htmlFor="username"
         >
           Username
         </label>
         <input
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:bg-input-dark leading-tight focus:outline-none focus:shadow-outline"
           id="username"
           type="text"
           onChange={handleUsernameChange}
@@ -105,13 +105,13 @@ const SignupForm: React.FC = () => {
 
       <div className="pb-3 inline-block w-full">
         <label
-          className="block text-gray-700 text-sm font-bold"
+          className="block text-gray-700 dark:text-gray-100 text-sm font-bold"
           htmlFor="username"
         >
           Email
         </label>
         <input
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight bg-input dark:bg-input-dark focus:outline-none focus:shadow-outline"
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:bg-input-dark leading-tight bg-input dark:bg-input-dark focus:outline-none focus:shadow-outline"
           id="email"
           type="email"
           onChange={handleEmailChange}
@@ -121,13 +121,13 @@ const SignupForm: React.FC = () => {
 
       <div className="pb-3 inline-block w-full">
         <label
-          className="block text-gray-700 text-sm font-bold"
+          className="block text-gray-700 dark:text-gray-100 text-sm font-bold"
           htmlFor="password"
         >
           Password
         </label>
         <input
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:bg-input-dark leading-tight focus:outline-none focus:shadow-outline"
           id="password"
           type="password"
           onChange={handlePasswordChange}
@@ -137,13 +137,13 @@ const SignupForm: React.FC = () => {
 
       <div className="pb-3 inline-block w-full">
         <label
-          className="block text-gray-700 text-sm font-bold"
+          className="block text-gray-700 dark:text-gray-100 text-sm font-bold"
           htmlFor="passwordRepeat"
         >
           Repeat password
         </label>
         <input
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:bg-input-dark leading-tight focus:outline-none focus:shadow-outline"
           id="passwordRepeat"
           type="password"
           onChange={handlePasswordRepeatChange}
@@ -153,13 +153,13 @@ const SignupForm: React.FC = () => {
 
       <div className="pb-3 inline-block w-full">
         <label
-          className="block text-gray-700 text-sm font-bold"
+          className="block text-gray-700 dark:text-gray-100 text-sm font-bold"
           htmlFor="target"
         >
           Target
         </label>
         <input
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:bg-input-dark leading-tight focus:outline-none focus:shadow-outline"
           id="target"
           type="number"
           onChange={handleTargetChange}
@@ -167,7 +167,7 @@ const SignupForm: React.FC = () => {
           min="0"
           max="28"
         />
-        <p className="text-xs">
+        <p className="text-xs dark:text-gray-100">
           How many times would you like to work out a month? (0 - 28)
         </p>
       </div>

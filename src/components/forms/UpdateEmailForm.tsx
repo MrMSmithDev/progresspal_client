@@ -3,29 +3,29 @@ import { useModal } from '@hooks/useModal';
 import { fetchData } from '@utils/api';
 import React, { useState } from 'react';
 
-interface UpdatePasswordFormProps {
+interface UpdateEmailFormProps {
   closeForm: () => void;
 }
 
-const UpdatePasswordForm: React.FC<UpdatePasswordFormProps> = ({
+const UpdateEmailForm: React.FC<UpdateEmailFormProps> = ({
   closeForm,
 }) => {
-  const [oldPasswordInput, setOldPasswordInput] = useState<string>('');
-  const [newPasswordInput, setNewPasswordInput] = useState<string>('');
-  const [repeatPasswordInput, setRepeatPasswordInput] = useState<string>('');
+  const [oldEmailInput, setOldEmailInput] = useState<string>('');
+  const [newEmailInput, setNewEmailInput] = useState<string>('');
+  const [passwordInput, setPasswordInput] = useState<string>('');
 
   const { openModal } = useModal();
 
-  function handleOldPasswordChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setOldPasswordInput(e.currentTarget.value);
+  function handleOldEmailChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setOldEmailInput(e.currentTarget.value);
   }
 
-  function handleNewPasswordChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setNewPasswordInput(e.currentTarget.value);
+  function handleNewEmailChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setNewEmailInput(e.currentTarget.value);
   }
 
-  function handleRepeatPasswordChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setRepeatPasswordInput(e.currentTarget.value);
+  function handlePasswordChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setPasswordInput(e.currentTarget.value);
   }
 
   async function submitForm(e: React.FormEvent<HTMLFormElement>) {
@@ -35,13 +35,13 @@ const UpdatePasswordForm: React.FC<UpdatePasswordFormProps> = ({
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        oldPassword: oldPasswordInput,
-        newPassword: newPasswordInput,
-        repeatNewPassword: repeatPasswordInput,
+        oldEmail: oldEmailInput,
+        newEmail: newEmailInput,
+        password: passwordInput,
       }),
     };
 
-    const data = await fetchData('/user/update-password', reqOptions);
+    const data = await fetchData('/user/update-email', reqOptions);
 
     if (data.error) {
       openModal(data.error);
@@ -59,50 +59,51 @@ const UpdatePasswordForm: React.FC<UpdatePasswordFormProps> = ({
       <div className="pb-3 inline-block w-full">
         <label
           className="block text-gray-700 dark:text-gray-100 text-sm font-bold"
-          htmlFor="old-password"
+          htmlFor="old-email"
         >
-          Old Password
+          Old email
         </label>
         <input
           className="shadow appearance-none border bg-input dark:bg-input-dark rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          id="old-password"
-          type="password"
-          onChange={handleOldPasswordChange}
-          placeholder="Old Password"
+          id="old-email"
+          type="text"
+          onChange={handleOldEmailChange}
+          placeholder="Old Email"
         />
       </div>
 
       <div className="pb-3 inline-block w-full">
         <label
           className="block text-gray-700 dark:text-gray-100 text-sm font-bold"
-          htmlFor="new-password"
+          htmlFor="new-email"
         >
-          New Password
+          New email
         </label>
         <input
           className="shadow appearance-none border bg-input dark:bg-input-dark rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          id="new-password"
-          type="password"
-          onChange={handleNewPasswordChange}
-          placeholder="New Password"
+          id="new-email"
+          type="text"
+          onChange={handleOldEmailChange}
+          placeholder="New Email"
         />
       </div>
 
       <div className="pb-3 inline-block w-full">
         <label
           className="block text-gray-700 dark:text-gray-100 text-sm font-bold"
-          htmlFor="repeat-password"
+          htmlFor="password"
         >
-          Repeat New Password
+          Password
         </label>
         <input
           className="shadow appearance-none border bg-input dark:bg-input-dark rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          id="repeat-password"
+          id="password"
           type="password"
-          onChange={handleOldPasswordChange}
-          placeholder="Repeat New Password"
+          onChange={handlePasswordChange}
+          placeholder="Password"
         />
       </div>
+
       <div className="flex gap-2">
         <SubmitButton func={submitForm} text="Update" />
         <CancelButton cancelFunc={closeForm} />
@@ -111,4 +112,4 @@ const UpdatePasswordForm: React.FC<UpdatePasswordFormProps> = ({
   );
 };
 
-export default UpdatePasswordForm;
+export default UpdateEmailForm;

@@ -1,4 +1,5 @@
 import { mainLogo } from '@assets/images';
+import { ThemeToggle } from '@components/buttons';
 import { SignInForm } from '@components/forms';
 import { useAuth } from '@hooks/useAuth';
 import Image from 'next/image';
@@ -17,7 +18,10 @@ const SignIn: React.FC = () => {
   return (
     <main className="flex justify-center w-full ">
       <div className="home-background-img absolute top-0 left-0 right-0 bottom-0"></div>
-      <div className="flex flex-col shadow-md rounded items-center w-100 m-4 p-4 bg-secondary-background dark:bg-secondary-background-dark">
+      <div className="relative flex flex-col shadow-md rounded items-center w-100 m-4 p-4 bg-secondary-background dark:bg-secondary-background-dark">
+        <div className="absolute top-2 right-2">
+          <ThemeToggle />
+        </div>
         <Image
           src={mainLogo}
           height="200"
@@ -29,9 +33,11 @@ const SignIn: React.FC = () => {
           Progress Pal
         </h1>
         <SignInForm />
-        <p className="text-xs mb-4">Don't have an account yet?</p>
+        <p className="text-xs dark:text-gray-100 mb-4">
+          Don't have an account yet?
+        </p>
         <Link
-          className="text-sm mb-4 inline-block rounded border-solid border-2 border-primary py-1 px-3 tracking-wider"
+          className="text-sm mb-4 inline-block dark:text-gray-100 rounded border-solid border-2 border-primary py-1 px-3 tracking-wider "
           href="/"
         >
           Sign up

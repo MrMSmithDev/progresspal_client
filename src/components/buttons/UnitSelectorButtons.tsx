@@ -21,10 +21,10 @@ const UnitSelectorButtons: React.FC<UnitSelectorProps> = ({}) => {
         onClick={changeToMet}
         value="met"
       >
-        <p className="block text-gray-700 text-xs md:text-sm font-bold">
+        <p className="block text-gray-700 dark:text-gray-100 text-xs md:text-sm font-bold">
           Metric
         </p>
-        <p className="block text-gray-700 text-xs font-thin">
+        <p className="block text-gray-700 dark:text-gray-100 text-xs font-thin">
           kilograms / kilometers
         </p>
       </button>
@@ -33,10 +33,10 @@ const UnitSelectorButtons: React.FC<UnitSelectorProps> = ({}) => {
         onClick={changeToImp}
         value="imp"
       >
-        <p className="block text-gray-700 text-xs md:text-sm font-bold">
+        <p className="block text-gray-700 dark:text-gray-100 text-xs md:text-sm font-bold">
           Imperial
         </p>
-        <p className="block text-gray-700 text-xs font-thin">pounds / miles</p>
+        <p className="block text-gray-700 dark:text-gray-100 text-xs font-thin">pounds / miles</p>
       </button>
     </div>
   );

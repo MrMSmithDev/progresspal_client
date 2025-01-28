@@ -61,13 +61,13 @@ const SignInForm: React.FC = () => {
     >
       <div className="pb-3 inline-block w-full">
         <label
-          className="block text-gray-700 text-sm font-bold"
+          className="block text-gray-700 dark:text-gray-100 text-sm font-bold"
           htmlFor="username"
         >
           Username
         </label>
         <input
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:bg-input-dark leading-tight focus:outline-none focus:shadow-outline"
           id="username"
           type="text"
           onChange={handleUsernameChange}
@@ -77,13 +77,13 @@ const SignInForm: React.FC = () => {
 
       <div className="pb-3 inline-block w-full">
         <label
-          className="block text-gray-700 text-sm font-bold"
+          className="block text-gray-700 dark:text-gray-100 text-sm font-bold"
           htmlFor="password"
         >
           Password
         </label>
         <input
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:bg-input-dark leading-tight focus:outline-none focus:shadow-outline"
           id="password"
           type="password"
           onChange={handlePasswordChange}
