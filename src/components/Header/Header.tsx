@@ -42,7 +42,7 @@ const Header: React.FC = () => {
           alt="Progress Pal Logo"
           className="rounded-lg bg-background-dark"
         />
-        <h1 className="text-4xl tracking-wider font-delirium text-transparent bg-gradient-to-t from-primary to-green-gradient bg-clip-text hidden md:inline-block">
+        <h1 className="text-4xl tracking-wider font-delirium text-transparent bg-gradient-to-t from-primary to-green-gradient bg-clip-text hidden md:inline-block select-none">
           Progress Pal
         </h1>
       </div>
