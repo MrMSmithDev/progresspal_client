@@ -12,12 +12,14 @@ export async function fetchData<T>(
   route: string,
   options: Partial<RequestInit> = {}
 ): Promise<any> {
-  console.log(`${API_ENDPOINT}${route}`);
-  console.log(options);
-  const response = await fetch(`${API_ENDPOINT}${route}`, options);
-  if (!response.ok) {
-    const data = (await response.json()) as ErrorInterface;
-    return { status: response.status, error: data.error };
+  try {
+    const response = await fetch(`${API_ENDPOINT}${route}`, options);
+    if (!response.ok) {
+      const data = (await response.json()) as ErrorInterface;
+      return { status: response.status, error: data.error };
+    }
+    return (await response.json()) as T;
+  } catch (err) {
+    return { error: err.Message };
   }
-  return (await response.json()) as T;
 }
