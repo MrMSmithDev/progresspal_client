@@ -6,7 +6,7 @@ const DumbbellIcon: React.FC<IconProps> = ({ className = '' }) => {
     <svg
       viewBox="0 0 24 24"
       fill="none"
-      className={`${className}h-7 w-7 lg:h-10 md:w-10`}
+      className={`${className} h-7 w-7 lg:h-10 md:w-10`}
     >
       <g strokeWidth="0"></g>
       <g strokeLinecap="round" strokeLinejoin="round"></g>
