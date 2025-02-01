@@ -32,7 +32,7 @@
   --color-secondary-dark: #e64a19;
 
   --color-input: #fdfdfd;
-  --color-input-dark: #2a3b4a;
+  --color-input-dark: #e8f0fe;
 
   --color-background: #f0f0f0;
   --color-background-dark: #0a192e;
@@ -41,7 +41,7 @@
   --color-secondary-background-dark: #051d3e;
 
   --color-button: #0a192e;
-  --color-button-dark: ;
+  --color-button-dark: #4e4ee4;
 
   --color-green-gradient: #81ffa5;
 
@@ -67,15 +67,19 @@
   }
 }
 
+.active-nav-text {
+  color: #10d0a3;
+}
+
 .active-nav-icon {
-  border: 2px solid white;
+  border: 2px solid #10d0a3;
   border-radius: 4px;
 }
 
 .inset-button {
-    border-left: 1px solid black;
-    border-top: 1px solid black;
-    transform: translate(1px, 1px);
+  border-left: 1px solid black;
+  border-top: 1px solid black;
+  transform: translate(1px, 1px);
 }
 
 .modal-slide {

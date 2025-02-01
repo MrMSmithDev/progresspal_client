@@ -48,23 +48,43 @@ const Header: React.FC = () => {
       </div>
       <nav className="flex gap-5 lg:gap-10 items-center ml-auto mr-auto">
         <Link href="/dashboard">
+          <span
+            className={`${isActive('/dashboard') ? 'active-nav-text' : 'hover:border-b-primary hover:border-b-2 hover:border-b-solid'} text-gray-100 hidden md:!block tracking-widest font-bold`}
+          >
+            Home
+          </span>
           <HomeIcon
-            className={`${isActive('/dashboard') ? 'active-nav-icon' : ''}`}
+            className={`${isActive('/dashboard') ? 'active-nav-icon' : ''} md:!hidden`}
           />
         </Link>
         <Link href="/activities">
+          <span
+            className={`${isActive('/activities') ? 'active-nav-text' : 'hover:border-b-primary hover:border-b-2 hover:border-b-solid'} text-gray-100 hidden md:!block tracking-widest font-bold`}
+          >
+            Activities
+          </span>
           <DumbbellIcon
-            className={`${isActive('/activities') ? 'active-nav-icon' : ''}`}
+            className={`${isActive('/activities') ? 'active-nav-icon' : ''} md:!hidden`}
           />
         </Link>
         <Link href="/progress">
+          <span
+            className={`${isActive('/progress') ? 'active-nav-text' : 'hover:border-b-primary hover:border-b-2 hover:border-b-solid'} text-gray-100 hidden md:!block tracking-widest font-bold`}
+          >
+            Progress
+          </span>
           <GraphIcon
-            className={`${isActive('/progress') ? 'active-nav-icon' : ''}`}
+            className={`${isActive('/progress') ? 'active-nav-icon' : ''} md:!hidden`}
           />
         </Link>
         <Link href="/settings">
+          <span
+            className={`${isActive('/settings') ? 'active-nav-text' : 'hover:border-b-primary hover:border-b-2 hover:border-b-solid'} text-gray-100 hidden md:!block tracking-widest font-bold`}
+          >
+            Settings
+          </span>
           <SettingsIcon
-            className={`${isActive('/settings') ? 'active-nav-icon' : ''}`}
+            className={`${isActive('/settings') ? 'active-nav-icon' : ''} md:!hidden`}
           />
         </Link>
       </nav>
