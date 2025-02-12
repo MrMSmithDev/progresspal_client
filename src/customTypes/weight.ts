@@ -3,5 +3,5 @@ export default interface Weight {
   userId: string;
   date: string;
   unit: 'met' | 'imp';
-  weight: number;
+  weight: string;
 }
