@@ -28,8 +28,9 @@
   --color-primary: #10d0a3;
   --color-primary-dark: #76a118;
 
-  --color-secondary: #ff5722;
-  --color-secondary-dark: #e64a19;
+  --color-low: #e64a19;
+
+  --color-middle:#f7ec79;
 
   --color-input: #fdfdfd;
   --color-input-dark: #e8f0fe;
@@ -49,21 +50,15 @@
   --font-delirium-neon: delirium-neon;
 }
 
-.home-background-img {
-  background-position: center;
-  background-size: cover;
-  z-index: -1;
-}
-
 @media (max-width: 768px) {
-  .home-background-img {
-    background-image: url('~@assets/images/home-sm-bg.webp');
+  .home-bg-img {
+    background-image: url('/assets/images/home-sm-bg.webp');
   }
 }
 
 @media (min-width: 769px) {
-  .home-background-img {
-    background-image: url('~@assets/images/home-lg-bg.webp');
+  .home-bg-img {
+    background-image: url('/assets/images/home-lg-bg.webp');
   }
 }
 
