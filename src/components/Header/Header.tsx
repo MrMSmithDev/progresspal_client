@@ -33,7 +33,7 @@ const Header: React.FC = () => {
   }
 
   return (
-    <header className="fixed top-0 w-full py-1 px-5 grid grid-cols-[auto_1fr_auto] md:grid-cols-3 items-center bg-gradient-to-b from-black via-black to-transparent">
+    <header className="fixed top-0 w-full py-1 px-5 grid grid-cols-[auto_1fr] md:grid-cols-2 items-center bg-gradient-to-b from-black via-black to-transparent">
       <div className="flex flex-start items-center gap-2 mr-auto">
         <Image
           src={mainLogoNoBg}
@@ -46,7 +46,7 @@ const Header: React.FC = () => {
           Progress Pal
         </h1>
       </div>
-      <nav className="flex gap-5 lg:gap-10 items-center ml-auto mr-auto">
+      <nav className="flex gap-5 lg:gap-10 items-center ml-auto">
         <Link href="/dashboard">
           <span
             className={`${isActive('/dashboard') ? 'active-nav-text' : 'hover:border-b-primary hover:border-b-2 hover:border-b-solid'} text-gray-100 hidden md:!block tracking-widest font-bold`}
@@ -88,14 +88,6 @@ const Header: React.FC = () => {
           />
         </Link>
       </nav>
-      <div className="flex gap-3 items-center ml-auto">
-        <a href="https://www.linkedin.com/in/michael-smith-bbbaab345/">
-          <LinkedInIcon />
-        </a>
-        <a href="https://github.com/MrMSmithDev/progresspal_client">
-          <GitHubIcon />
-        </a>
-      </div>
     </header>
   );
 };
