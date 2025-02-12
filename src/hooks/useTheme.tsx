@@ -3,19 +3,17 @@ import { useEffect, useState } from 'react';
 type Themes = 'light' | 'dark';
 
 const useTheme = (): [string, () => void] => {
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const [theme, setTheme] = useState<Themes>(() => {
+    if (typeof window !== 'undefined') {
+      return (localStorage.getItem('theme') ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')) as Themes;
+    }
+    return 'light';
+  });
 
   useEffect(() => {
-    const storedTheme = localStorage.getItem('theme');
-    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)')
-      .matches
-      ? 'dark'
-      : 'light';
-    const initialTheme = (storedTheme || systemTheme) as Themes;
-
-    setTheme(initialTheme);
-    document.documentElement.classList.add(initialTheme);
-  }, []);
+    document.documentElement.classList.add(theme);
+  }, [theme]);
 
   function toggleTheme() {
     const newTheme = theme === 'light' ? 'dark' : 'light';
