@@ -1,7 +1,5 @@
 /** @type {import('tailwindcss').Config} */
 
-console.log('Reading config');
-
 module.exports = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx}',
