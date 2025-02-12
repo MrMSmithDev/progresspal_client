@@ -11,7 +11,6 @@ const TermsAndConditionsPage: React.FC = () => {
 
   return (
     <main>
-      <div className="home-background-img fixed top-0 left-0 right-0 bottom-0"></div>
       <div className="relative flex justify-center items-start w-full min-h-screen">
         <div className="flex flex-col shadow-md rounded justify-start items-center w-100 lg:w-200 m-4 p-4 bg-secondary-background dark:bg-secondary-background-dark">
           <h1 className="text-3xl font-bold mb-6 text-gray-800 dark:text-gray-100">

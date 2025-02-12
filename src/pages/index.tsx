@@ -17,7 +17,6 @@ const IndexPage: React.FC = () => {
 
   return (
     <main className="flex justify-center w-full">
-      <div className="home-background-img fixed top-0 left-0 right-0 bottom-0"></div>
       <div className="relative flex justify-center items-start w-full min-h-screen">
         <div className="relative flex flex-col shadow-md rounded justify-start items-center w-100 m-4 p-4 bg-secondary-background dark:bg-secondary-background-dark">
           <div className="absolute top-2 right-2">

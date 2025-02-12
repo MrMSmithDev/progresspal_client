@@ -1,3 +1,6 @@
+import RecentWeights from '@components/dashboard/RecentWeights';
+import RecentWorkouts from '@components/dashboard/RecentWorkouts';
+import TargetProgress from '@components/dashboard/TargetProgress';
 import { Header } from '@components/index';
 import { useAuth } from '@hooks/useAuth';
 import { useModal } from '@hooks/useModal';
@@ -53,11 +56,20 @@ const DashboardPage: React.FC = () => {
     }
   }, [token]);
 
+  // normalize data
+
   return (
     <>
-      <div className="home-background-img fixed top-0 left-0 right-0 bottom-0"></div>
       <Header />
-      <main>MAIN</main>
+      <main className="flex flex-col sm:grid sm:grid-cols-2 md:grid-cols-3 mt-[58px] mx-auto md:max-w-200 p-10">
+        <div>
+          <TargetProgress workouts={recentWorkouts} />
+        </div>
+        <div>
+          <RecentWorkouts workouts={recentWorkouts} />
+          <RecentWeights weightData={recentWeightData} />
+        </div>
+      </main>
     </>
   );
 };

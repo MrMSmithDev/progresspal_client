@@ -33,7 +33,6 @@ const SettingsPage: React.FC = () => {
 
   return (
     <>
-      <div className="home-background-img fixed top-0 left-0 right-0 bottom-0"></div>
       <Header />
       <main className="flex flex-col justify-center w-full p-2 flex-grow pt-[60px]">
         <div className="w-100 p-4 mt-4 shadow-md rounded mr-auto ml-auto bg-secondary-background dark:bg-secondary-background-dark flex flex-col justify-start items-center">

@@ -5,18 +5,16 @@ import { AppProps } from 'next/app';
 
 import '@styles/globals.css';
 import '@styles/reset.css';
-import useTheme from '@hooks/useTheme';
-
 function App({ Component, pageProps }: AppProps) {
-
-    useEffect(() => {
-        document.body.classList.add('bg-background', 'dark:bg-background-dark');
-    }, [])
+  useEffect(() => {
+    document.body.classList.add('bg-background', 'dark:bg-background-dark');
+  }, []);
 
   return (
     <React.StrictMode>
       <ModalProvider>
         <AuthProvider>
+          <div className="home-bg-img bg-center bg-cover fixed top-0 left-0 right-0 bottom-0 -z-1"></div>
           <Component
             className="bg-background dark:bg-background-dark"
             {...pageProps}
