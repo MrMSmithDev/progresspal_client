@@ -1,6 +1,5 @@
-import RecentWeights from '@components/dashboard/RecentWeights';
-import RecentWorkouts from '@components/dashboard/RecentWorkouts';
-import TargetProgress from '@components/dashboard/TargetProgress';
+import { NewWeightButton, NewWorkoutButton } from '@components/buttons';
+import { RecentWeights, TargetProgress } from '@components/dashboard';
 import { Header } from '@components/index';
 import { useAuth } from '@hooks/useAuth';
 import { useModal } from '@hooks/useModal';
@@ -61,15 +60,17 @@ const DashboardPage: React.FC = () => {
   return (
     <>
       <Header />
-      <main className="flex flex-col sm:grid sm:grid-cols-2 md:grid-cols-3 mt-[58px] mx-auto md:max-w-200 p-10">
-        <div>
-          <TargetProgress workouts={recentWorkouts} />
+      <main className="flex flex-col gap-3 md:gap-6 sm:grid sm:grid-cols-2 md:grid-cols-3 mt-[58px] mx-auto md:max-w-200 p-10">
+        <div className="flex flex-col md:flex-row gap-3 md:col-span-3">
+          <NewWorkoutButton />
+          <NewWeightButton />
         </div>
-        <div>
-          <RecentWorkouts workouts={recentWorkouts} />
+        <TargetProgress workouts={recentWorkouts} />
+        <div className="col-span-2">
           <RecentWeights weightData={recentWeightData} />
         </div>
       </main>
+      <div id="modal_root"></div>
     </>
   );
 };
