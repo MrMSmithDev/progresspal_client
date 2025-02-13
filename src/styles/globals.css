@@ -111,3 +111,7 @@
     transform: rotate(1turn);
   }
 }
+
+.modal-form-bg {
+  background-color: rgba(100, 100, 100, 0.5);
+}
