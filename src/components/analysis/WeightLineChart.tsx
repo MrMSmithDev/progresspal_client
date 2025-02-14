@@ -28,8 +28,6 @@ const WeightLineChart: React.FC<WeightLineChartProps> = ({
   >([]);
   const [units] = useUnits();
 
-  console.log(weightData.length);
-
   useEffect(() => {
     const now = new Date();
 
@@ -65,8 +63,6 @@ const WeightLineChart: React.FC<WeightLineChartProps> = ({
           : undefined;
       return { week: week.slice(5), avgWeight };
     });
-
-    console.log(chartData);
 
     setParsedData(chartData);
     setLoading(false);
