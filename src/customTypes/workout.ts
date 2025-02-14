@@ -1,4 +1,4 @@
-export interface Set {
+export interface ExerciseSet {
     weight: number;
     reps: number;
 }
@@ -7,7 +7,7 @@ export interface Exercise {
   type: 'strength' | 'cardio';
   name: string;
   distance?: number;
-  sets?: Set[];
+  sets?: ExerciseSet[];
 }
 
 export default interface Workout {
