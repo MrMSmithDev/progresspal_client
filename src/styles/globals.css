@@ -122,20 +122,17 @@
   0% {
     transform: scale(1, 1) translateX(0);
   }
-  10% {
+  20% {
     transform: scale(1.1, 0.9) translateX(0);
   }
-  30% {
+  44% {
     transform: scale(0.9, 1.1) translateX(-15px);
   }
-  50% {
+  65% {
     transform: scale(1.05, 0.95) translateX(0);
   }
-  57% {
+  80% {
     transform: scale(1, 1) translateX(-7px);
-  }
-  64% {
-    transform: scale(1, 1) translateX(0);
   }
   100% {
     transform: scale(1, 1) translateX(0);
