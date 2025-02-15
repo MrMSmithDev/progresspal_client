@@ -5,27 +5,28 @@ import {
 } from '@components/buttons';
 import useUnits from '@hooks/useUnits';
 import React, { useState } from 'react';
-import { ExerciseSet } from 'src/customTypes/workout';
+import { Exercise, ExerciseSet } from 'src/customTypes/workout';
 import { v4 as uuidV4 } from 'uuid';
 
 interface StrengthFieldsProps {
-  applyExercise: () => void;
-  handleExNameChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  applyExercise: (obj: Exercise) => void;
 }
 
-const StrengthFields: React.FC<StrengthFieldsProps> = ({
-  applyExercise,
-  handleExNameChange,
-}) => {
+const StrengthFields: React.FC<StrengthFieldsProps> = ({ applyExercise }) => {
   const [units] = useUnits();
+  const [exName, setExName] = useState<string>('');
   const [sets, setSets] = useState<ExerciseSet[]>([
     { id: uuidV4(), weight: 0, reps: 0 },
   ]);
 
+  function handleExNameChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setExName(e.currentTarget.value);
+  }
+
   function handleSetChange(
     e: React.ChangeEvent<HTMLInputElement>,
     id: string,
-    field: string,
+    field: string
   ) {
     const newValue = e.target.value === '' ? '' : Number(e.target.value); // Convert to number but allow empty input
 
@@ -36,8 +37,29 @@ const StrengthFields: React.FC<StrengthFieldsProps> = ({
     );
   }
 
-  function addSet() {
+  function addSet(e: React.MouseEvent<HTMLButtonElement>) {
+    e.preventDefault();
     setSets((prevSets) => [...prevSets, { id: uuidV4(), weight: 0, reps: 0 }]);
+  }
+
+  function removeFieldFunc(id: string) {
+    setSets((prevSets) => prevSets.filter((s) => s.id !== id));
+  }
+
+  function submitExercise(e: React.MouseEvent<HTMLButtonElement>) {
+    e.preventDefault();
+    const exObj = {
+      id: uuidV4(),
+      type: 'strength',
+      name: exName,
+      sets: sets.map((s) => ({ weight: s.weight, reps: s.reps })),
+    } as Exercise;
+
+    applyExercise(exObj);
+
+    // Set states to default
+    setExName('');
+    setSets([{ id: uuidV4(), weight: 0, reps: 0 }]);
   }
 
   return (
@@ -54,14 +76,11 @@ const StrengthFields: React.FC<StrengthFieldsProps> = ({
         type="text"
         onChange={handleExNameChange}
         placeholder="Name"
+        value={exName}
       />
 
-      {sets.map((set, index): React.ReactNode => {
-        function removeFieldFunc(id: string) {
-          setSets((prevSets) => prevSets.filter((s) => s.id !== id));
-        }
-
-        return (
+      {sets.map(
+        (set, index): React.ReactNode => (
           <div key={set.id} className="flex gap-3">
             <div>
               <label
@@ -78,6 +97,7 @@ const StrengthFields: React.FC<StrengthFieldsProps> = ({
                 value={set.weight}
                 min="0"
                 max="1000"
+                required
               />
             </div>
             <div>
@@ -95,6 +115,7 @@ const StrengthFields: React.FC<StrengthFieldsProps> = ({
                 value={set.reps}
                 min="0"
                 max="500"
+                required
               />
             </div>
             {index > 0 ? (
@@ -104,15 +125,15 @@ const StrengthFields: React.FC<StrengthFieldsProps> = ({
               />
             ) : null}
           </div>
-        );
-      })}
+        )
+      )}
 
       <div className="flex my-3">
         <GenericButton func={addSet} text="Add set" />
       </div>
 
       <SubmitButton
-        func={applyExercise}
+        func={submitExercise}
         text="Apply exercise"
         className="w-max px-2 mx-auto"
       />

@@ -1,10 +1,12 @@
 import { SubmitButton } from '@components/buttons';
 import React, { useEffect, useRef, useState } from 'react';
-import { Exercise, ExerciseSet } from 'src/customTypes/workout';
-import { CardioFields, StrengthFields } from '@components/forms';
+import { Exercise } from 'src/customTypes/workout';
+import CardioFields from './CardioFields';
+import StrengthFields from './StrengthFields';
 import useUnits from '@hooks/useUnits';
 import { useAuth } from '@hooks/useAuth';
 import { fetchData } from '@utils/api';
+import ExerciseDisplay from './ExerciseDisplay';
 
 const NewWorkoutForm: React.FC = () => {
   const [currentDateInput, setCurrentDateInput] = useState<string>('');
@@ -17,7 +19,6 @@ const NewWorkoutForm: React.FC = () => {
   const [currentExType, setCurrentExType] = useState<
     'strength' | 'cardio' | string
   >('strength');
-  const [exName, setExName] = useState<string>('');
 
   const dateSelector = useRef<HTMLInputElement>(null);
   useEffect(() => {
@@ -47,42 +48,13 @@ const NewWorkoutForm: React.FC = () => {
     if (e.currentTarget.checked) setCurrentExType(e.currentTarget.value);
   }
 
-  function handleExNameChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setExName(e.currentTarget.value);
-  }
-
-  // Cardio exercise handlers
-  const [distance, setDistance] = useState<number>(0);
-
-  function handleDistanceChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setDistance(parseInt(e.currentTarget.value));
-  }
-
-  // Strength exercise handlers
-  const [setArr, setSetArr] = useState<ExerciseSet[]>([]);
-
-
   // Submit funcs
-  function applyExercise() {
-    if (currentExType === 'cardio') {
-      const exObject = {
-        type: 'cardio',
-        name: exName,
-        distance: distance,
-      } as Exercise;
-      setCurrentExArr((prev) => [...prev, exObject]);
-      setDistance(0);
-      setExName('');
-    } else {
-      const exObject = {
-        type: 'strength',
-        name: exName,
-        sets: setArr,
-      } as Exercise;
-      setCurrentExArr((prev) => [...prev, exObject]);
-      setDistance(0);
-      setExName('');
-    }
+  function applyExercise(exObject: Exercise) {
+    setCurrentExArr((prevExArr) => [...prevExArr, exObject]);
+  }
+
+  function removeExFromArr(id: string) {
+    setCurrentExArr((prevExs) => prevExs.filter((e) => e.id !== id));
   }
 
   function submitForm(e: React.FormEvent<HTMLButtonElement>) {
@@ -110,19 +82,8 @@ const NewWorkoutForm: React.FC = () => {
   }
 
   const exerciseFieldComponents = {
-    cardio: (
-      <CardioFields
-        applyExercise={applyExercise}
-        handleDistanceChange={handleDistanceChange}
-        handleExNameChange={handleExNameChange}
-      />
-    ),
-    strength: (
-      <StrengthFields
-        applyExercise={applyExercise}
-        handleExNameChange={handleExNameChange}
-      />
-    ),
+    cardio: <CardioFields applyExercise={applyExercise} />,
+    strength: <StrengthFields applyExercise={applyExercise} />,
   };
 
   const maxDate = new Date().toISOString().split('T')[0];
@@ -170,7 +131,7 @@ const NewWorkoutForm: React.FC = () => {
       </div>
       <fieldset className="border-2 border-gray-700 dark:border-gray-100 w-full p-3 rounded my-5">
         <legend className="px-2 text-gray-700 dark:text-gray-100 font-bold">
-          Exercises
+          Add Exercise
         </legend>
 
         <div className="pb-3 inline-block w-full">
@@ -211,6 +172,14 @@ const NewWorkoutForm: React.FC = () => {
         {exerciseFieldComponents[currentExType] ||
           exerciseFieldComponents.cardio}
       </fieldset>
+      <div className="w-full mb-3">
+        <h2 className="px-2 text-center text-gray-700 dark:text-gray-100 font-bold mb-3">
+          Exercises
+        </h2>
+        <ul className="flex flex-col gap-3 w-full">
+          <ExerciseDisplay exercises={currentExArr} removeExFunc={removeExFromArr} />
+        </ul>
+      </div>
       <SubmitButton func={submitForm} text="Add workout" />
     </form>
   );
