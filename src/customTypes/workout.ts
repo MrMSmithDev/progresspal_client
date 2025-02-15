@@ -1,6 +1,7 @@
 export interface ExerciseSet {
-    weight: number;
-    reps: number;
+  id?: string; // To support field sets in creation
+  weight: number;
+  reps: number;
 }
 
 export interface Exercise {
