@@ -1,5 +1,6 @@
 import { default as CancelButton } from './CancelButton';
 import { default as DemoButton } from './DemoButton';
+import { default as DeleteFieldButton } from './DeleteFieldButton';
 import { default as GenericButton } from './GenericButton';
 import { default as NewWeightButton } from './NewWeightButton';
 import { default as NewWorkoutButton } from './NewWorkoutButton';
@@ -11,6 +12,7 @@ import { default as UnitSelectorButtons } from './UnitSelectorButtons';
 export {
   CancelButton,
   DemoButton,
+  DeleteFieldButton,
   GenericButton,
   NewWeightButton,
   NewWorkoutButton,

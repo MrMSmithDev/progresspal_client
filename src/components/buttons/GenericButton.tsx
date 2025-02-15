@@ -14,7 +14,7 @@ const GenericButton: React.FC<GenericButtonInterface> = ({
   return (
     <button
       onClick={func}
-      className={`${inset ? 'inset-button' : ''} rounded bg-background dark:bg-background-dark text-background-dark dark:text-background p-1 min-w-30 cursor-pointer tracking-wider`}
+      className={`${inset ? 'inset-button' : ''} rounded bg-background-dark dark:bg-background text-background dark:text-background-dark p-1 min-w-30 cursor-pointer tracking-wider`}
     >
       {text}
     </button>
