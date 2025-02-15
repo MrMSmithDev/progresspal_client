@@ -48,6 +48,8 @@
 
   --font-delirium: delirium;
   --font-delirium-neon: delirium-neon;
+
+  --animate-bounce-left: bounce-left 1s infinite ease-in-out; 
 }
 
 @media (max-width: 768px) {
@@ -104,9 +106,9 @@
   mask: var(--_m);
   -webkit-mask-composite: source-out;
   mask-composite: subtract;
-  animation: l3 1s infinite linear;
+  animation: loading-rotate 1s infinite linear;
 }
-@keyframes l3 {
+@keyframes loading-rotate {
   to {
     transform: rotate(1turn);
   }
@@ -114,4 +116,28 @@
 
 .modal-form-bg {
   background-color: rgba(100, 100, 100, 0.5);
+}
+
+@keyframes bounce-left {
+  0% {
+    transform: scale(1, 1) translateX(0);
+  }
+  10% {
+    transform: scale(1.1, 0.9) translateX(0);
+  }
+  30% {
+    transform: scale(0.9, 1.1) translateX(-15px);
+  }
+  50% {
+    transform: scale(1.05, 0.95) translateX(0);
+  }
+  57% {
+    transform: scale(1, 1) translateX(-7px);
+  }
+  64% {
+    transform: scale(1, 1) translateX(0);
+  }
+  100% {
+    transform: scale(1, 1) translateX(0);
+  }
 }
