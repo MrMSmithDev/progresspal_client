@@ -5,9 +5,11 @@ export interface ExerciseSet {
 }
 
 export interface Exercise {
+  id?: string; // To support removal in creation
   type: 'strength' | 'cardio';
   name: string;
   distance?: number;
+  time?: number;
   sets?: ExerciseSet[];
 }
 
