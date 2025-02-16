@@ -35,13 +35,13 @@ const ExerciseDisplay: React.FC<ExerciseDisplayProps> = ({
         <table className="table-fixed text-gray-700 dark:text-gray-100 w-1/2">
           <thead>
             <tr>
-              <th className="text-sm text-gray-700 dark:text-gray-100 text-center font-bold w-1/3">
+              <th className="text-sm text-gray-700 dark:text-gray-100 text-center font-bold w-1/3 p-1">
                 Set
               </th>
-              <th className="text-sm text-gray-700 dark:text-gray-100 text-center font-bold w-1/3">
+              <th className="text-sm text-gray-700 dark:text-gray-100 text-center font-bold w-1/3 p-1">
                 Weight ({units === 'met' ? 'kg' : 'lb'})
               </th>
-              <th className="text-sm text-gray-700 dark:text-gray-100 text-center font-bold w-1/3">
+              <th className="text-sm text-gray-700 dark:text-gray-100 text-center font-bold w-1/3 p-1">
                 Reps
               </th>
             </tr>
@@ -63,23 +63,23 @@ const ExerciseDisplay: React.FC<ExerciseDisplayProps> = ({
           </tbody>
         </table>
       ) : (
-        <table className="table-auto">
+        <table className="table-fixed text-gray-700 dark:text-gray-100 w-1/2">
           <thead>
             <tr>
-              <th className="text-sm text-gray-700 dark:text-gray-100 font-bold">
+              <th className="text-sm text-gray-700 dark:text-gray-100 text-center font-bold w-1/2">
                 Time
               </th>
-              <th className="text-sm text-gray-700 dark:text-gray-100 font-bold">
+              <th className="text-sm text-gray-700 dark:text-gray-100 text-center font-bold w-1/2">
                 Distance ({units === 'met' ? 'km' : 'miles'})
               </th>
             </tr>
           </thead>
           <tbody>
-            <tr className="flex gap-3">
-              <td className="text-sm text-gray-700 dark:text-gray-100 w-full">
+            <tr>
+              <td className="text-sm text-gray-700 dark:text-gray-100 text-center p-1 w-1/2">
                 {exercise.time}
               </td>
-              <td className="text-sm text-gray-700 dark:text-gray-100 w-full">
+              <td className="text-sm text-gray-700 dark:text-gray-100 text-center p-1 w-1/2">
                 {exercise.distance}
               </td>
             </tr>
@@ -87,7 +87,7 @@ const ExerciseDisplay: React.FC<ExerciseDisplayProps> = ({
         </table>
       )}
       <DeleteFieldButton
-        className="hover:animate-bounce-left"
+        className="hover:animate-bounce-left ml-auto"
         removeFieldFunc={() => {
           removeFieldFunc(exercise.id);
         }}
