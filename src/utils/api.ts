@@ -13,7 +13,15 @@ export async function fetchData<T>(
   options: Partial<RequestInit> = {}
 ): Promise<any> {
   try {
-    const response = await fetch(`${API_ENDPOINT}${route}`, options);
+    const response = await fetch(`${API_ENDPOINT}${route}`, {
+      ...options,
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+        ...options.headers,
+      },
+    });
+
     if (!response.ok) {
       const data = (await response.json()) as ErrorInterface;
       return { status: response.status, error: data.error };
