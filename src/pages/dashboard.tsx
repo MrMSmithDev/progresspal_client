@@ -4,6 +4,8 @@ import { Header } from '@components/index';
 import { useAuth } from '@hooks/useAuth';
 import { useModal } from '@hooks/useModal';
 import { fetchData } from '@utils/api';
+import { redirect } from 'next/navigation';
+import { Router, useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { type Weight, type Workout } from 'src/customTypes/index';
 
@@ -11,10 +13,17 @@ const DashboardPage: React.FC = () => {
   const [recentWorkouts, setRecentWorkouts] = useState<Workout[]>([]);
   const [recentWeightData, setRecentWeightData] = useState<Weight[]>([]);
 
-  const { token } = useAuth();
+  const { token, authLoading } = useAuth();
   const { openModal } = useModal();
+  const router = useRouter();
 
   useEffect(() => {
+    if (!token && !authLoading) router.push('/');
+  }, [token, authLoading]);
+
+  useEffect(() => {
+    if (authLoading || !token) return;
+
     async function updateWorkoutData() {
       const reqOptions: RequestInit = {
         method: 'GET',
@@ -49,11 +58,11 @@ const DashboardPage: React.FC = () => {
       }
     }
 
-    if (token) {
+    if (token && !authLoading) {
       void updateWorkoutData();
       void updateWeightData();
     }
-  }, [token]);
+  }, [token, authLoading]);
 
   // normalize data
 
