@@ -11,6 +11,7 @@ import { fetchData } from '@utils/api';
 
 interface AuthContextType {
   token: string | null;
+  authLoading: boolean;
   username: string | null;
   setToken: React.Dispatch<React.SetStateAction<string | null>>;
   setUsername: React.Dispatch<React.SetStateAction<string | null>>;
@@ -37,17 +38,24 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [token, setToken] = useState<string | null>(null);
   const [username, setUsername] = useState<string | null>(null);
+  const [authLoading, setAuthLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    const storedToken = localStorage.getItem('token');
-    const storedUsername = localStorage.getItem('username');
+    async function loadUserState() {
+      const storedToken = localStorage.getItem('token');
+      const storedUsername = localStorage.getItem('username');
 
-    setToken(storedToken);
-    setUsername(storedUsername);
-
-    if (storedToken && isTokenExpired(storedToken)) {
-      refreshToken();
+      if (storedToken && isTokenExpired(storedToken)) {
+        const newToken = await refreshToken();
+        if (!newToken) signout();
+      } else {
+        setToken(storedToken);
+        setUsername(storedUsername);
+      }
+      setAuthLoading(false);
     }
+
+    void loadUserState();
   }, []);
 
   async function refreshToken(): Promise<string | null> {
@@ -59,11 +67,13 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
       const newToken = data.token;
 
-      localStorage.setItem('token', newToken);
-      setToken(newToken);
+      if (newToken) {
+        localStorage.setItem('token', newToken);
+        setToken(newToken);
 
-      setUsername((data.user?.username as string) || username);
-      return newToken;
+        setUsername((data.user?.username as string) || username);
+        return newToken;
+      }
     } catch (err) {
       console.log(`Error refreshing user token: ${err}`);
       signout();
@@ -80,7 +90,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ token, setToken, username, setUsername, signout }}
+      value={{ token, setToken, username, setUsername, signout, authLoading }}
     >
       {children}
     </AuthContext.Provider>
