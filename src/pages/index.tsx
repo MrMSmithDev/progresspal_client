@@ -26,10 +26,6 @@ const IndexPage: React.FC = () => {
   } else {
     return (
       <>
-        <Head>
-          <title>Progress Pal</title>
-          <meta name="description" content="An exercise tracking app" />
-        </Head>
         <main className="flex justify-center w-full">
           <div className="relative flex justify-center items-start w-full min-h-screen">
             <div className="relative flex flex-col shadow-md rounded justify-start items-center w-100 m-4 p-4 bg-secondary-background dark:bg-secondary-background-dark">
