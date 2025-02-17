@@ -1,5 +1,6 @@
 import { NewWeightButton, NewWorkoutButton } from '@components/buttons';
 import { RecentWeights, TargetProgress } from '@components/dashboard';
+import RecentWorkouts from '@components/dashboard/RecentWorkouts';
 import { Header } from '@components/index';
 import { useAuth } from '@hooks/useAuth';
 import { useModal } from '@hooks/useModal';
@@ -78,6 +79,9 @@ const DashboardPage: React.FC = () => {
         <div className="col-span-2">
           <RecentWeights weightData={recentWeightData} />
         </div>
+        <div className="col-span-3">
+          <RecentWorkouts workouts={recentWorkouts} />
+        </div>
       </main>
       <div id="modal_root"></div>
     </>
@@ -88,10 +92,4 @@ export default DashboardPage;
 
 // TODO add workout / weight data
 
-// TODO workout streak - weeks hitting three in a row
 
-// TODO five most recent workouts - three for sm vw
-
-// TODO progress towards current monthly target
-
-// TODO Graph showing trend of last five weight updates
