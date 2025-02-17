@@ -10,7 +10,7 @@ import {
 } from 'recharts';
 import useUnits from '@hooks/useUnits';
 import findWeekStartDate from '@utils/findWeekStartDate';
-import convertUnits from '@utils/convertUnits';
+import { convertWeightUnits } from '@utils/convertUnits';
 import Loader from '@components/Loader/Loader';
 
 interface WeightLineChartProps {
@@ -46,7 +46,7 @@ const WeightLineChart: React.FC<WeightLineChartProps> = ({
       const weight: number =
         entry.unit === units
           ? parseFloat(entry.weight)
-          : convertUnits(parseFloat(entry.weight), entry.unit); // Check unit type matches users preference and convert if not
+          : convertWeightUnits(parseFloat(entry.weight), entry.unit); // Check unit type matches users preference and convert if not
       if (!weeklyDataMap[weekStart]) {
         weeklyDataMap[weekStart] = [];
       }
