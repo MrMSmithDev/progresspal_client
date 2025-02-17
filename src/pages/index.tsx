@@ -6,7 +6,6 @@ import Image from 'next/image';
 import { mainLogo } from '@assets/images';
 import Link from 'next/link';
 import { DemoButton, ThemeToggle } from '@components/buttons';
-import Head from 'next/head';
 import Loader from '@components/Loader/Loader';
 
 const IndexPage: React.FC = () => {
