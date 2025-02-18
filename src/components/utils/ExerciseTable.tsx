@@ -13,7 +13,7 @@ const ExerciseTable: React.FC<ExerciseTableProps> = ({ exercise }) => {
     <div className="flex w-full py-2">
       <h3 className="mr-auto w-1/2">{exercise.name}</h3>
       {exercise.type === 'strength' ? (
-        <table className="table-fixed text-gray-700 dark:text-gray-100 w-1/2 mb-3 overflow-hidden">
+        <table className="table-fixed text-gray-700 dark:text-gray-100 w-1/2 mb-2 overflow-hidden">
           <thead>
             <tr>
               <th className="text-sm text-gray-700 dark:text-gray-100 text-center font-bold w-1/3 p-1 align-bottom">
@@ -44,7 +44,7 @@ const ExerciseTable: React.FC<ExerciseTableProps> = ({ exercise }) => {
           </tbody>
         </table>
       ) : (
-        <table className="table-fixed text-gray-700 dark:text-gray-100 w-1/2 mb-3">
+        <table className="table-fixed text-gray-700 dark:text-gray-100 w-1/2 mb-2">
           <thead>
             <tr>
               <th className="text-sm text-gray-700 dark:text-gray-100 text-center font-bold w-1/2 align-bottom">
