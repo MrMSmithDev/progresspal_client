@@ -5,8 +5,7 @@ import { Header } from '@components/index';
 import { useAuth } from '@hooks/useAuth';
 import { useModal } from '@hooks/useModal';
 import { fetchData } from '@utils/api';
-import { redirect } from 'next/navigation';
-import { Router, useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { type Weight, type Workout } from 'src/customTypes/index';
 
@@ -65,8 +64,6 @@ const DashboardPage: React.FC = () => {
     }
   }, [token, authLoading]);
 
-  // normalize data
-
   return (
     <>
       <Header />
@@ -89,7 +86,3 @@ const DashboardPage: React.FC = () => {
 };
 
 export default DashboardPage;
-
-// TODO add workout / weight data
-
-
