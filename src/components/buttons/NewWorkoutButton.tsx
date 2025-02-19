@@ -18,7 +18,7 @@ const NewWorkoutButton: React.FC = () => {
       {formIsOpen
         ? createPortal(
             <ModalFormBg closeModal={closeWorkoutForm}>
-              <NewWorkoutForm />
+              <NewWorkoutForm closeForm={closeWorkoutForm} />
             </ModalFormBg>,
             document.querySelector('#modal_root')
           )

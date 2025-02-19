@@ -6,11 +6,19 @@ import StrengthFields from './StrengthFields';
 import useUnits from '@hooks/useUnits';
 import { useAuth } from '@hooks/useAuth';
 import { fetchData } from '@utils/api';
+import { type CreateWorkoutResponse } from 'src/customTypes/responses';
 import ExerciseDisplay from './ExerciseDisplay';
+import { useModal } from '@hooks/useModal';
 
-const NewWorkoutForm: React.FC = () => {
+interface NewWorkoutFormProps {
+  closeForm: () => void;
+}
+
+const NewWorkoutForm: React.FC<NewWorkoutFormProps> = ({ closeForm }) => {
   const [currentDateInput, setCurrentDateInput] = useState<string>('');
   const [currentLengthInput, setCurrentLengthInput] = useState<number>(0);
+
+  const { openModal } = useModal();
   const [units] = useUnits();
   const { token } = useAuth();
 
@@ -19,22 +27,6 @@ const NewWorkoutForm: React.FC = () => {
   const [currentExType, setCurrentExType] = useState<
     'strength' | 'cardio' | string
   >('strength');
-
-  const dateSelector = useRef<HTMLInputElement>(null);
-  useEffect(() => {
-    if (dateSelector.current) {
-      const currentDate = new Date();
-
-      let day: string | number = currentDate.getDate();
-      let month: string | number = currentDate.getMonth() + 1;
-      const year = currentDate.getFullYear();
-
-      if (month < 10) month = '0' + month;
-      if (day < 10) day = '0' + day;
-
-      dateSelector.current.value = `${year}-${month}-${day}`;
-    }
-  }, [dateSelector]);
 
   function handleDateChange(e: React.ChangeEvent<HTMLInputElement>) {
     setCurrentDateInput(e.currentTarget.value);
@@ -57,8 +49,8 @@ const NewWorkoutForm: React.FC = () => {
     setCurrentExArr((prevExs) => prevExs.filter((e) => e.id !== id));
   }
 
-  function submitForm(e: React.FormEvent<HTMLButtonElement>) {
-    e.preventDefault;
+  async function submitForm(e: React.FormEvent<HTMLButtonElement>) {
+    e.preventDefault();
 
     const workoutObject = {
       date: currentDateInput,
@@ -76,15 +68,46 @@ const NewWorkoutForm: React.FC = () => {
       body: JSON.stringify(workoutObject),
     };
 
-    console.log(JSON.stringify(workoutObject));
-    //TODO: Resolve outcome
-    // const data = fetchData('/workout', reqOptions) as NewWorkoutResponse;
+    try {
+      const data = (await fetchData(
+        '/workout',
+        reqOptions
+      )) as CreateWorkoutResponse;
+
+      if (data.error) {
+        return openModal(<span>Error: {data.error}</span>);
+      }
+
+      console.log(data.data);
+
+      openModal(<span>Workout successfully added</span>);
+      return closeForm();
+    } catch (err) {
+      openModal(<span>Error creating workout data</span>);
+    }
   }
 
   const exerciseFieldComponents = {
     cardio: <CardioFields applyExercise={applyExercise} />,
     strength: <StrengthFields applyExercise={applyExercise} />,
   };
+
+  const dateSelector = useRef<HTMLInputElement>(null);
+  useEffect(() => {
+    if (dateSelector.current) {
+      const currentDate = new Date();
+
+      let day: string | number = currentDate.getDate();
+      let month: string | number = currentDate.getMonth() + 1;
+      const year = currentDate.getFullYear();
+
+      if (month < 10) month = '0' + month;
+      if (day < 10) day = '0' + day;
+
+      dateSelector.current.value = `${year}-${month}-${day}`;
+      setCurrentDateInput(`${year}-${month}-${day}`);
+    }
+  }, [dateSelector]);
 
   const maxDate = new Date().toISOString().split('T')[0];
 
@@ -177,7 +200,10 @@ const NewWorkoutForm: React.FC = () => {
           Exercises
         </h2>
         <ul className="flex flex-col gap-3 w-full">
-          <ExerciseDisplay exercises={currentExArr} removeExFunc={removeExFromArr} />
+          <ExerciseDisplay
+            exercises={currentExArr}
+            removeExFunc={removeExFromArr}
+          />
         </ul>
       </div>
       <SubmitButton func={submitForm} text="Add workout" />
