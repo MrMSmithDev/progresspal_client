@@ -34,9 +34,9 @@ const ModalFormBg: React.FC<ModalFormBgProps> = ({ children, closeModal }) => {
 
   return (
     <div
-      className="flex justify-center items-center p-5 min-h-[100lvh] w-[100vw] modal-form-bg absolute top-0 left-0"
+      className="fixed flex justify-center items-center p-5 min-h-[100lvh] w-[100vw] modal-form-bg absolute top-0 left-0"
     >
-      <div ref={ref} className="flex-grow m-5 w-full min-h-200 max-w-200 bg-background dark:bg-background-dark rounded p-3">
+      <div ref={ref} className="flex-grow m-5 w-full max-w-200 max-h-[80lvh] overflow-y-auto bg-background dark:bg-background-dark rounded p-3">
         {children}
       </div>
     </div>

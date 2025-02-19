@@ -16,7 +16,7 @@ const NewWeightForm: React.FC<NewWeightFormProps> = ({ closeForm }) => {
   const [currentWeightInput, setCurrentWeightInput] = useState<number | ''>(0);
   const [inputError, setInputError] = useState<string | null>(null);
 
-  const {token} = useAuth()
+  const { token } = useAuth();
   const { openModal } = useModal();
   const [units] = useUnits();
 
@@ -43,27 +43,24 @@ const NewWeightForm: React.FC<NewWeightFormProps> = ({ closeForm }) => {
 
     setInputError(null);
 
-    try {
-      const reqOptions = {
-        method: 'POST',
-        headers: { authorization: `Bearer ${token}`},
-        body: JSON.stringify({
-          date: currentDateInput,
-          weight: currentWeightInput,
-          unit: units,
-        }),
-      };
-      console.log('fetching');
+    const reqOptions = {
+      method: 'POST',
+      headers: { authorization: `Bearer ${token}` },
+      body: JSON.stringify({
+        date: currentDateInput,
+        weight: currentWeightInput,
+        unit: units,
+      }),
+    };
 
+    try {
       const data = (await fetchData(
         '/weight',
         reqOptions
       )) as CreateWeightResponse;
-      console.log(data);
       if (data.error) {
         openModal(<span>{data.error}</span>);
       } else {
-        console.log(data);
         openModal(<span>Weight successfully added</span>);
         closeForm();
       }
@@ -93,7 +90,7 @@ const NewWeightForm: React.FC<NewWeightFormProps> = ({ closeForm }) => {
 
   return (
     <form className="flex flex-col items-center pt-6 pb-4 w-full">
-      <h1 className="text-gray-700 dark:text-gray-100 font-bold">
+      <h1 className="text-gray-700 dark:text-gray-100 font-bold mb-3">
         Create new workout
       </h1>
       <div className="mb-3 inline-block w-full">
@@ -138,7 +135,7 @@ const NewWeightForm: React.FC<NewWeightFormProps> = ({ closeForm }) => {
       {inputError && (
         <span className="italic text-sm my-2 text-low">{inputError}</span>
       )}
-      <SubmitButton func={submitForm} text="Add workout" />
+      <SubmitButton func={submitForm} text="Add workout" className="mt-3" />
     </form>
   );
 };
