@@ -1,8 +1,9 @@
 import React from 'react';
+import { IconProps } from './types';
 
-const CloseIcon: React.FC = () => {
+const CloseIcon: React.FC<IconProps> = ({ className }) => {
   return (
-    <svg viewBox="0 0 1024 1024" fill="#000000">
+    <svg className={className} viewBox="0 0 1024 1024" fill="#000000">
       <g strokeWidth="0"></g>
       <g strokeLinecap="round" strokeLinejoin="round"></g>
       <g>
