@@ -80,7 +80,7 @@ const DashboardPage: React.FC = () => {
           <RecentWorkouts workouts={recentWorkouts} />
         </div>
       </main>
-      <div id="modal_root"></div>
+      <div id="modal_root" />
     </>
   );
 };

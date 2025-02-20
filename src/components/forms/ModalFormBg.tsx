@@ -13,7 +13,7 @@ const ModalFormBg: React.FC<ModalFormBgProps> = ({ children, closeModal }) => {
       if (ref.current) {
         function closeModalCallback(event: MouseEvent) {
           const modal = ref.current;
-          const workoutButton = document.querySelector('.workout-button');
+          const workoutButton = document.querySelector('.open-button');
 
           if (
             modal &&
