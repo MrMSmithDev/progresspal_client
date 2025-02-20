@@ -2,8 +2,7 @@ import { default as CancelButton } from './CancelButton';
 import { default as DemoButton } from './DemoButton';
 import { default as DeleteFieldButton } from './DeleteFieldButton';
 import { default as GenericButton } from './GenericButton';
-import { default as NewWeightButton } from './NewWeightButton';
-import { default as NewWorkoutButton } from './NewWorkoutButton';
+import { default as RecordButton } from './RecordButton';
 import { default as SignOutButton } from './SignOutButton';
 import { default as SubmitButton } from './SubmitButton';
 import { default as ThemeToggle } from './ThemeToggle';
@@ -14,8 +13,7 @@ export {
   DemoButton,
   DeleteFieldButton,
   GenericButton,
-  NewWeightButton,
-  NewWorkoutButton,
+  RecordButton,
   SignOutButton,
   SubmitButton,
   ThemeToggle,
